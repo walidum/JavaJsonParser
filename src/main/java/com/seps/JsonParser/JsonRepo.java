@@ -28,7 +28,7 @@ public class JsonRepo {
         return json;
     }
 
-    public String loadJSONFromFile() throws FileNotFoundException, IOException {
+    private String loadJSONFromFile() throws FileNotFoundException, IOException {
         URL url = JsonRepo.class.getClassLoader().getResource("json.json");
         InputStream is = new FileInputStream(url.getPath());
         int size = is.available();
