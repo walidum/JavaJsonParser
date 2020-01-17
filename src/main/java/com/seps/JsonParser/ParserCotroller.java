@@ -21,7 +21,11 @@ public class ParserCotroller {
 
     @GetMapping("/start")
     public String startParse() {
-        jsonParserService.parse();
-        return "start";
+        try {
+            jsonParserService.parse();
+            return "good !!";
+        } catch (Exception e) {
+            return e.getMessage();
+        }
     }
 }

@@ -13,7 +13,8 @@
             "likesCount": "2",
             "comments": [],
             "timeOfPost": "1234567890"
-        }, {
+        },
+        {
             "post_id": "Walid Boubechtoula",
             "actor_id": "1234567890",
             "picOfPersonWhoPosted": "http://example.com/photo.jpg",

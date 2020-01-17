@@ -5,6 +5,7 @@
  */
 package com.seps.JsonParser;
 
+import java.io.IOException;
 import org.json.JSONArray;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,7 +21,7 @@ public class JsonParserService {
     @Autowired
     JsonRepo jsonRep;
 
-    public void parse() {
+    public void parse() throws IOException {
         String json = jsonRep.getJson();
         JSONObject obj = new JSONObject(json);
         String pageName = obj.getJSONObject("pageInfo").getString("pageName");

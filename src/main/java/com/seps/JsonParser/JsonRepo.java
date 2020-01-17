@@ -6,6 +6,7 @@
 package com.seps.JsonParser;
 
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.URL;
@@ -20,31 +21,21 @@ public class JsonRepo {
 
     private String json;
 
-    public String getJson() {
+    public String getJson() throws IOException {
         if (json == null || json.isEmpty()) {
             loadJSONFromFile();
         }
         return json;
     }
 
-    public void setJson(String json) {
-        this.json = json;
-    }
-
-    public String loadJSONFromFile() {
-
-        try {
-            URL is = JsonRepo.class.getClassLoader().getResource("json.json");
-            InputStream in = new FileInputStream(is.getPath());
-            int size = in.available();
-            byte[] buffer = new byte[size];
-            in.read(buffer);
-            in.close();
-            json = new String(buffer, "UTF-8");
-        } catch (IOException ex) {
-            ex.printStackTrace();
-            return null;
-        }
+    public String loadJSONFromFile() throws FileNotFoundException, IOException {
+        URL url = JsonRepo.class.getClassLoader().getResource("json.json");
+        InputStream is = new FileInputStream(url.getPath());
+        int size = is.available();
+        byte[] buffer = new byte[size];
+        is.read(buffer);
+        is.close();
+        json = new String(buffer, "UTF-8");
         return json;
     }
 }
